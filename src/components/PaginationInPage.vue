@@ -2,7 +2,7 @@
   <div class="d-flex justify-center custom-pagination">
     <v-pagination
       v-model="currentPage"
-      color="#1976d2"
+      color="#add8e6"
       :length="lastPage"
       total-visible="4"
     ></v-pagination>

@@ -33,8 +33,8 @@
               </h4>
             </div>
             <div style="margin: 0 15px">
-              <span>{{ document.exchange[0].from.full_name }}</span>
-              <p>{{ `${document.description.slice(1, 10)}...` }}</p>
+              <span style="font-size:13px;">{{ document.exchange[0].from.full_name }}</span>
+              <p style="font-size:13px;">{{ `${document.description.slice(1, 10)}...` }}</p>
             </div>
             <div></div>
             <v-spacer />
@@ -43,7 +43,7 @@
             >
           </div>
         </div>
-        <div class="pagination">
+        <div class="footer">
           <pagination-in-page
             store="received_document"
             collection="documents"
@@ -52,7 +52,7 @@
         </div>
       </v-col>
       <v-col cols="9 pa-0 ma-0" class="parentRow" solo>
-        <div style="height: 100%" class="pa-0 ma-0" v-if="data.id">
+        <div style="height: 100vh" class="pa-0 ma-0" v-if="data.id">
           <v-row class="main_row ma-0 pa-0 rowInCol">
             <v-col cols="8" class="ma-0 pa-0 colDocument">
               <h2 style="width: 100%; color: blue; text-align: center">
@@ -155,25 +155,26 @@
                 </div>
                 <v-spacer></v-spacer>
                 <div class="class-group" v-if="my_answer.status === 'waiting'">
-                  <v-btn class="btn-received1" @click="answer('confirmed')">
+                  <v-btn class="btn-received1 float-right mx-5 success" @click="answer('confirmed')">
                     accept
                     {{ data.my_answer }}
                   </v-btn>
-                  <v-btn class="btn-received2" @click="answer('canceled')">
+                  
+                  <v-btn class="btn-received2 float-right error" @click="answer('canceled')">
                     cancel
                   </v-btn>
                 </div>
               </div>
             </v-col>
 
-            <v-col cols="4" class="chat_col" style="">
+            <v-col cols="4" class="chat_col" style="padding: 0; margin: 0;">
               <h3
-                style="
+               style="
                   text-align: center;
-                  color: whitesmoke;
-                  background-color: #707070;
+                  color: #555555;
+                  background-color: #add8e6;
                   overflow: hidden;
-                  box-shadow: 0px 3px 10px black;
+                  box-shadow: 0px 1px 10px #e6e6e6;
                 "
                 class="py-2"
               >
@@ -334,7 +335,6 @@ export default {
     }),
   },
   created() {
-    this.$store.dispatch("users/fetchUsers");
     this.searchDocument();
   },
   mounted() {
@@ -451,44 +451,45 @@ export default {
 </script>
 <style>
 .span2 {
-  font-weight: 800;
+  font-weight: 900;
   color: aliceblue;
-  font-size: 15px;
-  padding: 0px 10px;
+  padding: 3px 12px;
   border-radius: 50%;
   background-color: red;
 }
 .main_div {
-  font-size: 10px;
+  height: 50px;
+  box-sizing: border-box;
   border-top: 1px solid black;
   background-color: #f0f0f0;
   color: rgb(112, 112, 112);
-  }
-  .main_div:hover {
-    background-color: #B4DECE;
-  }
+}
+.main_div:hover {
+  background-color: #b4dece;
+}
 .left-col {
   border-right: 2px solid #89cc83;
 }
 .parent-div {
+  width: 100%;
   overflow-y: auto;
-  padding-top: 25px;
-  height: 65%;
+  padding-top: 15px;
+  height: 700px;
 }
-.colDocument {
-}
+
 .search_input {
   width: 250px;
 }
 .logo-div {
   font-weight: 900;
-  font-size: 25px;
+  font-size: 20px;
   color: #404040;
   font-family: Georgia, "Times New Roman", Times, serif;
-  width: 50px !important;
+  width: 30px !important;
   background-color: lightblue;
-  justify-content: space-around;
-  height: 50px !important;
+  /* display: flex;
+  justify-content: center; */
+  height: 30px !important;
   border-radius: 50%;
 }
 .h3_main {
@@ -496,6 +497,7 @@ export default {
   margin-top: 20px;
   font-size: 20px;
   color: rgb(77, 77, 219);
+
   font-weight: 100;
 }
 
@@ -520,21 +522,22 @@ export default {
   font-family: monospace;
 }
 .parentRow {
-  height: 100%;
+  height: 100vh;
 }
 .main_row {
+  
   padding: 0;
   margin: 0;
-  height: 100%;
 }
 .container1 {
+  height: 90vh;
   overflow: hidden;
-  height: 900px;
   background-color: rgb(255, 255, 255);
 }
 .chat_col {
   position: relative;
   margin: 0 !important;
+  height: 90vh;
   border-left: 1px solid #404040;
 }
 .input {
@@ -544,6 +547,15 @@ export default {
   bottom: 1px;
   width: 90%;
 }
+.over-input {
+  display: flex;
+  position: absolute;
+  margin: 0 auto;
+  bottom: 70px;
+  font-size: 15px;
+  width: 88%;
+}
+
 .logo_div2 {
   float: left;
   position: absolute;
@@ -578,29 +590,23 @@ export default {
 }
 .chat {
   position: relative;
+  display: block;
   width: 80%;
   display: inline-block !important;
-}
-.over-input {
-  display: flex;
-  position: absolute;
-  margin: 0 auto;
-  bottom: 70px;
-  font-size: 15px;
-  width: 88%;
 }
 .file_span {
   display: inline-block;
   width: 100%;
+  height: 30px;
   margin-top: 10px;
+  font-size: 10px;
   box-shadow: 1px 1px 1px;
-  border: 1px solid red;
+  border: 1px solid #add8e6;
 }
 .message {
   border-radius: 10px 0;
   margin-left: 45px;
   margin-top: 20px;
-  max-width: 90%;
   word-wrap: break-word;
   word-break: break-all;
   padding: 5px 10px;
@@ -612,7 +618,6 @@ export default {
   border-radius: 0 10px;
   margin-right: 45px;
   margin-top: 20px;
-  max-width: 90%;
   word-wrap: break-word;
   word-break: break-all;
   padding: 5px 10px;
@@ -622,46 +627,32 @@ export default {
 }
 .scrollBar {
   overflow-y: auto;
-  max-height: 75vh;
+  max-height: 70vh;
 }
 @media only screen and (max-height: 800px) {
+  .parent-div {
+    width: 100%;
+    overflow-y: auto;
+    padding-top: 15px;
+    height: 500px;
+  }
   .scrollBar {
     margin-top: 10px;
     overflow-y: auto;
     max-height: 65vh;
   }
   .container1 {
-    height: 640px;
+    height: 90vh;
     overflow: hidden;
     background-color: rgb(255, 255, 255);
   }
-  .parent-div {
-    overflow-y: auto;
-    padding-top: 10px;
-    height: 45%;
-  }
   .span2 {
+    font-weight: 400;
     color: aliceblue;
-    padding: 2px 7px;
+    padding: 3px 10px;
     border-radius: 50%;
-    background-color: rgb(255, 91, 91);
+    background-color: red;
   }
-  .main_div {
-  border-top: 1px solid black;
-  background-color: #f0f0f0;
-  color: rgb(112, 112, 112);
-  }
-  .main_div:hover {
-    background-color: #B4DECE;
-  }
-
-  .parent-div {
-    overflow-y: auto;
-    padding-top: 10px;
-    height: 40%;
-    overflow-x: auto;
-  }
-
   .search_input {
     width: 200px;
   }
@@ -729,36 +720,8 @@ export default {
   color: white !important;
   height: 100%;
 }
-.class-group {
-  float: right;
-}
-.btn-received1 {
-  transition: 0.5s;
-  margin-left: 20px;
-  color: #1976d2 !important;
-  background-color: rgb(239, 255, 255) !important;
-  font-size: 16px !important;
-}
-.btn-received1:hover {
-  transition: 0.5s;
-  margin-left: 20px;
-  color: rgb(239, 255, 255) !important;
-  background-color: #1976d2 !important;
-  font-size: 16px !important;
-}
-.btn-received2 {
-  transition: 0.5s;
-  background-color: rgb(255, 245, 245) !important;
-  color: rgb(255, 100, 100) !important;
-  margin-left: 20px;
-  font-size: 16px !important;
-}
-.btn-received2:hover {
-  transition: 0.5s;
-  background-color: rgb(253, 100, 100) !important;
-  color: rgb(255, 245, 245) !important;
-  margin-left: 20px;
-  font-size: 16px !important;
+.footer{
+  position: fixed;
 }
 </style>
 

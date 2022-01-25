@@ -1,6 +1,7 @@
 <template>
   <div fluid class="container1">
-    <h1 class="text-center">hello world</h1>
+    <h1 class="text-center">Hello world</h1>
+    <p style="text-align:center;">Hello app that made node.js and vue.js. It has many function . you can get acquainted</p>
   </div>
 </template>
 <script>

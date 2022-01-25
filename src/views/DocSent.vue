@@ -42,7 +42,7 @@
             <!-- <span class="span2" v-if="complete.my_accept == true">!</span> -->
           </div>
         </div>
-        <v-footer>
+        <v-footer class="footer">
           <pagination-in-page
             store="sent_document"
             collection="documents"
@@ -159,10 +159,10 @@
               <h3
                 style="
                   text-align: center;
-                  color: whitesmoke;
-                  background-color: #707070;
+                  color: #555555;
+                  background-color: #add8e6;
                   overflow: hidden;
-                  box-shadow: 0px 3px 10px black;
+                  box-shadow: 0px 1px 10px #e6e6e6;
                 "
                 class="py-2"
               >
@@ -321,7 +321,7 @@ export default {
     }),
   },
   created() {
-    this.$store.dispatch("users/fetchUsers");
+    // this.$store.dispatch("users/fetchUsers");
     // this.$store.dispatch("sent_document/fetchDocuments");
     this.searchDocument();
   },
@@ -427,6 +427,8 @@ export default {
   background-color: red;
 }
 .main_div {
+  height: 50px;
+  box-sizing: border-box;
   border-top: 1px solid black;
   background-color: #f0f0f0;
   color: rgb(112, 112, 112);
@@ -438,10 +440,10 @@ export default {
   border-right: 2px solid #89cc83;
 }
 .parent-div {
+  width: 100%;
   overflow-y: auto;
   padding-top: 15px;
-      height: 100vh;
-
+  height: 700px;
 }
 
 .search_input {
@@ -449,14 +451,14 @@ export default {
 }
 .logo-div {
   font-weight: 900;
-  font-size: 25px;
+  font-size: 20px;
   color: #404040;
   font-family: Georgia, "Times New Roman", Times, serif;
-  width: 40px !important;
+  width: 30px !important;
   background-color: lightblue;
   /* display: flex;
   justify-content: center; */
-  height: 40px !important;
+  height: 30px !important;
   border-radius: 50%;
 }
 .h3_main {
@@ -489,21 +491,22 @@ export default {
   font-family: monospace;
 }
 .parentRow {
-  height: 100%;
+  height: 100vh;
 }
 .main_row {
+  
   padding: 0;
   margin: 0;
 }
 .container1 {
-  height: 900px;
+  height: 90vh;
   overflow: hidden;
   background-color: rgb(255, 255, 255);
 }
 .chat_col {
   position: relative;
   margin: 0 !important;
-
+  height: 90vh;
   border-left: 1px solid #404040;
 }
 .input {
@@ -563,9 +566,11 @@ export default {
 .file_span {
   display: inline-block;
   width: 100%;
+  height: 30px;
   margin-top: 10px;
+  font-size: 10px;
   box-shadow: 1px 1px 1px;
-  border: 1px solid red;
+  border: 1px solid #add8e6;
 }
 .message {
   border-radius: 10px 0;
@@ -591,23 +596,24 @@ export default {
 }
 .scrollBar {
   overflow-y: auto;
-  max-height: 75vh;
+  max-height: 70vh;
 }
 @media only screen and (max-height: 800px) {
+  .parent-div {
+    width: 100%;
+    overflow-y: auto;
+    padding-top: 15px;
+    height: 500px;
+  }
   .scrollBar {
     margin-top: 10px;
     overflow-y: auto;
     max-height: 65vh;
   }
   .container1 {
-    height: 640px;
+    height: 90vh;
     overflow: hidden;
     background-color: rgb(255, 255, 255);
-  }
-  .parent-div {
-    overflow-y: auto;
-    padding-top: 10px;
-    height: 100vh;
   }
   .span2 {
     font-weight: 400;
@@ -616,20 +622,6 @@ export default {
     border-radius: 50%;
     background-color: red;
   }
-  .main_div {
-    border-top: 1px solid black;
-    background-color: #f0f0f0;
-    color: rgb(112, 112, 112);
-  }
-  .main_div:hover {
-    background-color: #b4dece;
-  }
-  .parent-div {
-    overflow-y: auto;
-    padding-top: 10px;
-    height: 40%;
-  }
-
   .search_input {
     width: 200px;
   }
@@ -697,5 +689,9 @@ export default {
   color: white !important;
   height: 100%;
 }
+.footer{
+  position: fixed;
+}
+
 </style>
 
